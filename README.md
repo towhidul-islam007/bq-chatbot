@@ -4,20 +4,23 @@ This project allows you to query your dbt project using natural language. It use
 
 ## Project Structure
 
-Due to limitations in the development environment, the project structure has been flattened. All Python scripts (`main.py`, `dbt_parser.py`, `openai_service.py`) are located in the root directory.
+The project is structured as a standard Poetry project. The main source code is located in the `dbt_nlq` directory.
 
 ## Setup
 
-1. **Install Dependencies**:
-   Install the required Python packages using pip:
+1. **Install Poetry**:
+   If you don't have Poetry installed, follow the instructions on the [official Poetry website](https://python-poetry.org/docs/#installation).
+
+2. **Install Dependencies**:
+   Install the project dependencies using Poetry:
    ```bash
-   pip install -r requirements.txt
+   poetry install
    ```
 
-2. **Configure Environment Variables**:
+3. **Configure Environment Variables**:
    Create a file named `config.env` in the root of the project and add your Azure OpenAI credentials and the path to your dbt `manifest.json` file.
 
-   **Important**: Due to sandbox limitations, you might need to hardcode your credentials in `openai_service.py` for the application to run.
+   **Important**: Due to sandbox limitations, you might need to hardcode your credentials in `dbt_nlq/openai_service.py` for the application to run.
 
    Here is an example of the `config.env` file:
    ```
@@ -30,20 +33,20 @@ Due to limitations in the development environment, the project structure has bee
    DBT_MANIFEST_PATH="manifest.json"
    ```
 
-3. **dbt Manifest File**:
+4. **dbt Manifest File**:
    Place your dbt `manifest.json` file in the root of the project. A sample `manifest.json` is provided.
 
 ## Usage
 
-To run the application, execute the `main.py` script from the root of the project with your natural language question as an argument:
+To run the application, use `poetry run` to execute the `main.py` script with your natural language question as an argument:
 
 ```bash
-python main.py "Your natural language question here"
+poetry run python -m dbt_nlq.main "Your natural language question here"
 ```
 
 For example:
 ```bash
-python main.py "How many customers are there?"
+poetry run python -m dbt_nlq.main "How many customers are there?"
 ```
 
 The script will then output the generated SQL query (or the prompt, as is the case in the current version).

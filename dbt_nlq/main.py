@@ -1,11 +1,11 @@
 import argparse
 import os
 from dotenv import load_dotenv
-from dbt_parser import parse_dbt_manifest
-from openai_service import generate_sql_query, get_azure_openai_credentials
+from .dbt_parser import parse_dbt_manifest
+from .openai_service import generate_sql_query, get_azure_openai_credentials
 
-# Load environment variables from config.env
-load_dotenv('config.env')
+# Load environment variables from .env file in the root
+load_dotenv()
 
 def main():
     """
@@ -20,7 +20,7 @@ def main():
         get_azure_openai_credentials()
 
         # Get the path to the manifest.json file from environment variables
-        manifest_path = "manifest.json"
+        manifest_path = os.getenv("DBT_MANIFEST_PATH", "manifest.json")
 
         # Load the dbt models
         dbt_models = parse_dbt_manifest(manifest_path)

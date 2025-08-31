@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "dbt-nlq"
+version = "0.1.0"
+description = "Query your dbt project using natural language with Azure OpenAI."
+authors = ["Jules"]
+packages = [{ include = "dbt_nlq" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+openai = "^1.0.0"
+python-dotenv = "^1.0.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
