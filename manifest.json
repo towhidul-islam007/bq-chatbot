@@ -1,0 +1,42 @@
+{
+  "nodes": {
+    "model.my_dbt_project.customers": {
+      "resource_type": "model",
+      "name": "customers",
+      "description": "This table contains customer data.",
+      "columns": {
+        "customer_id": {
+          "name": "customer_id",
+          "description": "The unique identifier for a customer."
+        },
+        "first_name": {
+          "name": "first_name",
+          "description": "The customer's first name."
+        },
+        "last_name": {
+          "name": "last_name",
+          "description": "The customer's last name."
+        }
+      }
+    },
+    "model.my_dbt_project.orders": {
+      "resource_type": "model",
+      "name": "orders",
+      "description": "This table contains order data.",
+      "columns": {
+        "order_id": {
+          "name": "order_id",
+          "description": "The unique identifier for an order."
+        },
+        "customer_id": {
+          "name": "customer_id",
+          "description": "Foreign key to the customers table."
+        },
+        "order_date": {
+          "name": "order_date",
+          "description": "The date the order was placed."
+        }
+      }
+    }
+  }
+}
